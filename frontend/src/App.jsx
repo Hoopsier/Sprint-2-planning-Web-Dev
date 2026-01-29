@@ -1,11 +1,15 @@
 import "./App.css";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 function App() {
   return (
     <>
-     <p className="text-red-500">test</p>
-     
+    <Navbar/>
+     <Home/>
+     <Footer/>
     </>
   );
 }
