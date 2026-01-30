@@ -51,8 +51,38 @@
 - Closer collaboration between UI/UX and developers to refine navigation and user experience earlier.
 
 
-## Trello (Product backlog and sprint backlog)
-https://trello.com/invite/b/696f90619255eae7df9c7ad6/ATTIc024ede14f461a3c3f39e59bbeae2bceB869B65D/group-web-project 
+## Product Backlog – Food E-commerce Application
+### Trello (Product backlog and sprint backlog)
+- https://trello.com/invite/b/696f90619255eae7df9c7ad6/ATTIc024ede14f461a3c3f39e59bbeae2bceB869B65D/group-web-project 
+
+The Product Backlog represents a prioritized list of all functional and technical requirements for the MERN-based food e-commerce application. It is maintained by the Product Owner and serves as the source for all sprint backlogs.
+
+### Front-end Requirements
+- React application setup
+- Application routing
+- Responsive UI aligned with Sprint 1 Figma prototype
+- Restaurant and food listing views
+- Cart and checkout UI
+
+### Back-end Requirements
+- Express server configuration
+- REST API structure
+- User authentication and authorization
+- MongoDB schema design
+- API endpoints for users, restaurants, and orders
+
+### AI-related Requirements
+- Initial AI recommendation endpoint
+- Mock or rule-based recommendation logic
+- API structure ready for future AI enhancements
+
+### Infrastructure and Documentation
+- Environment configuration
+- Project folder structure
+- GitHub documentation
+- Deployment preparation
+
+Sprint 2 backlog items were selected directly from this Product Backlog based on Sprint 2 goals and assessment criteria.
 
 
 # Sprint 2 Goal
