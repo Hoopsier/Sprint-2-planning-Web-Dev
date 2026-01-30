@@ -23,6 +23,34 @@
     Self-assessment of the backend code using your favorite LLM. Each member is expected to write a self-assessment about the code he/she contributed. Use the following template to guide your reflection.
     Self-assessment of the frontend code using your favorite LLM. Each member is expected to write a self-assessment about the code he/she contributed. Use the following template to guide your reflection.
 
+## Sprint 1 Retrospective (4Ls)
+
+### Liked
+- Learning new technologies and concepts throughout the sprint.
+- Designing wireframes in Figma and defining UI components using Atomic Design.
+- Setting up project structure and task tracking using Trello and GitHub.
+- Collaborative problem-solving during pair programming and group work.
+
+### Learned
+- How to communicate more effectively within a development team.
+- How to break user stories into technical tasks.
+- How to translate user needs into reusable UI components and basic user flows.
+- Initial experience integrating React with Express APIs.
+
+### Lacked
+- Skills and experience in splitting tasks efficiently.
+- Regular and consistent team meetings.
+- Clearer frontend–backend integration planning.
+- Early feedback rounds to validate usability decisions.
+- Confidence and clarity when starting new technical tasks.
+
+### Longed For
+- More active and open communication within the team.
+- Clearer instructions and better task planning.
+- Improved time management.
+- Closer collaboration between UI/UX and developers to refine navigation and user experience earlier.
+
+
 ## Trello (Product backlog and sprint backlog)
 https://trello.com/invite/b/696f90619255eae7df9c7ad6/ATTIc024ede14f461a3c3f39e59bbeae2bceB869B65D/group-web-project 
 
