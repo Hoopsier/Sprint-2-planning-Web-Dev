@@ -50,7 +50,7 @@ function Navbar() {
         </div>
 
         <div className="mt-3 lg:hidden">
-          <div className="flex items-center justify-center gap-2 border border-gray-300 rounded-bl-full px-4 py-2.5 hover:text-blue-500 cursor-pointer hover:border-blue-500 transition-all mx-auto max-w-md w-full">
+          <div className="flex items-center justify-center gap-2 border border-gray-300 rounded-full px-4 py-2.5 hover:text-blue-500 cursor-pointer hover:border-blue-500 transition-all mx-auto max-w-md w-full">
             <MapPinIcon className="w-5 h-5" />
             <span className="text-sm">Delivery address</span>
           </div>
