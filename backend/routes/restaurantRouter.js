@@ -6,9 +6,11 @@ const {
   getRestaurantById,
   updateRestaurant,
   deleteRestaurant,
+  newRating,
 } = require('../controllers/restaurantController');
 
 router.get('/', getAllRestaurants);
+router.put('/rate/:restaurantId', newRating);
 router.get('/:restaurantId', getRestaurantById);
 router.post('/', createRestaurant);
 router.put('/:restaurantId', updateRestaurant);

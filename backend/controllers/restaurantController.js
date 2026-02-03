@@ -5,9 +5,9 @@ const getAllRestaurants = (req, res) => {
 };
 
 const createRestaurant = (req, res) => {
-  const { street, city, postal_code, items = [] } = req.body;
+  const { street, city, postal_code, rating_list = [], items = [] } = req.body;
 
-  const newRestaurant = Restaurant.addOne(street, city, postal_code, items);
+  const newRestaurant = Restaurant.addOne(street, city, postal_code, rating_list, items);
 
   if (newRestaurant) {
     res.status(201).json(newRestaurant);
@@ -37,6 +37,15 @@ const updateRestaurant = (req, res) => {
   }
 };
 
+const newRating = (req, res) => {
+  const restaurantId = req.params.restaurantId;
+  const updateData = req.body;
+  const updated = Restaurant.addRating(restaurantId, updateData)
+  if (updated != null) {
+    res.json(updated);
+  }
+}
+
 const deleteRestaurant = (req, res) => {
   const restaurantId = req.params.restaurantId;
   const isDeleted = Restaurant.deleteOne(restaurantId);
@@ -53,4 +62,5 @@ module.exports = {
   getRestaurantById,
   updateRestaurant,
   deleteRestaurant,
+  newRating
 };
