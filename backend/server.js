@@ -1,18 +1,14 @@
 require('dotenv').config();
 const express = require("express");
-const mongoose = require('mongoose');
+const connectDB = require("./config/db.js")
 const app = express();
-const PORT = process.env.PORT;
-
-console.log(process.env.MONGODB_URL)
-mongoose.connect(process.env.MONGODB_URL)
-  .then(() => console.log("Connection Successful"))
-  .catch((err) => console.error("Connection Error:", err));
-
-app.listen(PORT, () => {
-  console.log(`Server started at port ${PORT}`);
+connectDB();
+app.get('/', (req, res) => {
+  res.send('API is Running!');
 });
 
-app.get('/', (req, res) => {
-  res.send('Connected to MongoDB!');
+
+
+app.listen(4000, () => {
+  console.log(`Server started at port http://localhost:4000`);
 });
