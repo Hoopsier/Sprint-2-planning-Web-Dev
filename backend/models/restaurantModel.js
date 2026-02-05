@@ -1,9 +1,8 @@
-let resArray = []
-let nextId = 1
+const mongoose = require("mongoose");
 
 /*
  * Object model:
- * id: int
+ * id: ObjectId (MongoDB)
  * street: string
  * city: string
  * postal_code: int
@@ -12,48 +11,85 @@ let nextId = 1
  * items: Item[]
  */
 
-const getAll = () => {
-  return resArray;
-};
-
 const calculateAverageRating = (ratings) => {
   if (!Array.isArray(ratings) || ratings.length === 0) return 0.0;
   const nums = ratings.map(Number).filter(n => !Number.isNaN(n) && n >= 0 && n <= 5);
   if (nums.length === 0) return 0.0;
   const sum = nums.reduce((a, b) => a + b, 0);
   // keep two decimal places
-  return Math.round((sum / nums.length) * 100) / 100;
+  return Math.round((sum / nums.length) * 10) / 10;
 };
 
-const addOne = (street, city, postal_code, rating_list = [], items = []) => {
+const restaurantSchema = new mongoose.Schema({
+  street: {
+    type: String,
+    required: true,
+  },
+  city: {
+    type: String,
+    required: true,
+  },
+  postal_code: {
+    type: Number,
+    required: true,
+  },
+  rating_list: {
+    type: [Number],
+    default: [],
+    validate: {
+      validator: function (ratings) {
+        return ratings.every((r) => r >= 0 && r <= 5);
+      },
+      message: "All ratings must be between 0 and 5",
+    },
+  },
+  rating: {
+    type: Number,
+    default: 0.0,
+  },
+  items: {
+    type: [Object],
+    default: [],
+  },
+});
+
+// Calculate average rating before saving
+restaurantSchema.pre("save", function() {
+  this.rating = Math.round(calculateAverageRating(this.rating_list) * 10) / 10;
+});
+
+const Restaurant = mongoose.model("Restaurant", restaurantSchema);
+
+const getAll = async () => {
+  return await Restaurant.find();
+};
+
+const addOne = async (street, city, postal_code, rating_list = [], items = []) => {
   if (!street || !city || !postal_code) {
     return false;
   }
 
   const safeRatings = Array.isArray(rating_list) ? rating_list.map(Number).filter(n => !Number.isNaN(n) && n >= 0 && n <= 5) : [];
-  const rating = calculateAverageRating(safeRatings);
 
-  const newRestaurant = {
-    id: nextId++,
+  const newRestaurant = new Restaurant({
     street,
     city,
     postal_code,
     rating_list: safeRatings,
-    rating,
     items,
-  };
+  });
 
-  resArray.push(newRestaurant);
+  await newRestaurant.save();
   return newRestaurant;
 };
 
-const findById = (id) => {
-  const restaurant = resArray.find((r) => r.id === Number(id));
+const findById = async (id) => {
+  const restaurant = await Restaurant.findById(id);
   return restaurant || false;
 };
 
-const updateOneById = (id, updateData) => {
-  const restaurant = findById(id);
+const updateOneById = async (id, updateData) => {
+  const restaurant = await Restaurant.findById(id);
   if (restaurant) {
     if (updateData.street) restaurant.street = updateData.street;
     if (updateData.city) restaurant.city = updateData.city;
@@ -63,37 +99,31 @@ const updateOneById = (id, updateData) => {
     if (updateData.rating_list !== undefined) {
       const safeRatings = Array.isArray(updateData.rating_list) ? updateData.rating_list.map(Number).filter(n => !Number.isNaN(n) && n >= 0 && n <= 5) : [];
       restaurant.rating_list = safeRatings;
-      restaurant.rating = calculateAverageRating(safeRatings);
     }
 
+    await restaurant.save();
     return restaurant;
   }
   return false;
 };
 
-
-const addRating = (id, updateData) => {
-  const restaurant = findById(id)
-  if (updateData.addRating !== undefined) {
+const addRating = async (id, updateData) => {
+  const restaurant = await Restaurant.findById(id);
+  if (restaurant && updateData.addRating !== undefined) {
     const r = Number(updateData.addRating);
     if (!Number.isNaN(r) && r >= 0 && r <= 5) {
       restaurant.rating_list = restaurant.rating_list || [];
       restaurant.rating_list.push(r);
-      restaurant.rating = calculateAverageRating(restaurant.rating_list);
+      await restaurant.save();
+      return restaurant;
     }
-    return restaurant
   }
-  return null
-}
+  return null;
+};
 
-const deleteOne = (id) => {
-  const restaurant = findById(id);
-  if (restaurant) {
-    const initialLength = resArray.length;
-    resArray = resArray.filter((r) => r.id != Number(id));
-    return resArray.length < initialLength;
-  }
-  return false;
+const deleteOne = async (id) => {
+  const result = await Restaurant.findByIdAndDelete(id);
+  return result !== null;
 };
 
 module.exports = {
