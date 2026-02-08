@@ -11,9 +11,9 @@ const getAllRestaurants = async (req, res) => {
 
 const createRestaurant = async (req, res) => {
   try {
-    const { street, city, postal_code, rating_list = [], items = [] } = req.body;
+    const { street, city, postal_code, rating_list = [], items = [], image } = req.body;
 
-    const newRestaurant = await Restaurant.addOne(street, city, postal_code, rating_list, items);
+    const newRestaurant = await Restaurant.addOne(street, city, postal_code, rating_list, items, image);
 
     if (newRestaurant) {
       res.status(201).json(newRestaurant);
@@ -83,11 +83,26 @@ const deleteRestaurant = async (req, res) => {
   }
 };
 
+const removeImage = async (req, res) => {
+  try {
+    const restaurantId = req.params.restaurantId;
+    const updated = await Restaurant.removeImage(restaurantId);
+    if (updated) {
+      res.json(updated);
+    } else {
+      res.status(404).json({ message: "Restaurant not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Error removing image", error: error.message });
+  }
+};
+
 module.exports = {
   getAllRestaurants,
   createRestaurant,
   getRestaurantById,
   updateRestaurant,
   deleteRestaurant,
-  newRating
+  newRating,
+  removeImage,
 };

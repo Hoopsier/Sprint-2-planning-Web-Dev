@@ -51,10 +51,14 @@ const restaurantSchema = new mongoose.Schema({
     type: [Object],
     default: [],
   },
+  image: {
+    type: String,
+    default: null,
+  },
 });
 
 // Calculate average rating before saving
-restaurantSchema.pre("save", function() {
+restaurantSchema.pre("save", function () {
   this.rating = Math.round(calculateAverageRating(this.rating_list) * 10) / 10;
 });
 
@@ -64,7 +68,7 @@ const getAll = async () => {
   return await Restaurant.find();
 };
 
-const addOne = async (street, city, postal_code, rating_list = [], items = []) => {
+const addOne = async (street, city, postal_code, rating_list = [], items = [], image = null) => {
   if (!street || !city || !postal_code) {
     return false;
   }
@@ -77,6 +81,7 @@ const addOne = async (street, city, postal_code, rating_list = [], items = []) =
     postal_code,
     rating_list: safeRatings,
     items,
+    image,
   });
 
   await newRestaurant.save();
@@ -95,6 +100,7 @@ const updateOneById = async (id, updateData) => {
     if (updateData.city) restaurant.city = updateData.city;
     if (updateData.postal_code !== undefined) restaurant.postal_code = updateData.postal_code;
     if (updateData.items !== undefined) restaurant.items = updateData.items;
+    if (updateData.image !== undefined) restaurant.image = updateData.image;
 
     if (updateData.rating_list !== undefined) {
       const safeRatings = Array.isArray(updateData.rating_list) ? updateData.rating_list.map(Number).filter(n => !Number.isNaN(n) && n >= 0 && n <= 5) : [];
@@ -121,6 +127,16 @@ const addRating = async (id, updateData) => {
   return null;
 };
 
+const removeImage = async (id) => {
+  const restaurant = await Restaurant.findById(id);
+  if (restaurant) {
+    restaurant.image = null;
+    await restaurant.save();
+    return restaurant;
+  }
+  return false;
+};
+
 const deleteOne = async (id) => {
   const result = await Restaurant.findByIdAndDelete(id);
   return result !== null;
@@ -133,6 +149,7 @@ module.exports = {
   updateOneById,
   deleteOne,
   addRating,
+  removeImage,
   calculateAverageRating,
 };
 
