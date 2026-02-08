@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./pages/Login"
+import SignUp from "./pages/SignUp";
 
 
 function App() {
@@ -11,8 +12,9 @@ function App() {
     <Navbar/>
      <Home/>
      <Footer/>
-     <h1>This is for testing (Login)</h1>
-     <Login/>
+     <h1>This is for testing (SingUp)</h1>
+     {/* <Login/> */}
+     <SignUp/>
     </>
   );
 }
