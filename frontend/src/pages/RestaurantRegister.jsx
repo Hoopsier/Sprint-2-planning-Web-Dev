@@ -7,7 +7,7 @@ import {
   EyeIcon,
   EyeSlashIcon,
   PhoneIcon,
-  UserIcon 
+  UserIcon,
 } from "@heroicons/react/24/outline";
 
 import AuthTabButton from "../components/Ui/AuthTabButton";
@@ -16,7 +16,7 @@ const RestaurantRegister = () => {
   const [activeTab, setActiveTab] = useState("restaurant");
 
   const [formData, setFormData] = useState({
-    fullName: "",
+    businessName: "",
     email: "",
     phoneNumber: "",
     password: "",
@@ -68,11 +68,11 @@ const RestaurantRegister = () => {
           <div className="relative h-full flex items-center justify-center px-8">
             <div className="text-center text-white max-w-xl">
               <div className="mb-6">
-                <h2 className="text-5xl font-bold mb-4 leading-tight bg-black/17 w-fit p-3 rounded-3xl">
+                <h2 className="text-5xl font-bold mb-4 leading-tight bg-black/9 w-fit p-3 rounded-3xl">
                   Welcome to <span className="text-yellow-300">Yum</span>
                   <span className="text-white">Drop</span>
                 </h2>
-                <p className="text-2xl mb-6 font-medium">Some Text</p>
+                <p className="text-2xl mb-6 font-medium">Grow your restaurant with more visibility, more orders, and loyal customers.</p>
                 <div className="h-1 w-24 bg-red-500 mx-auto mb-6"></div>
               </div>
             </div>
@@ -87,7 +87,7 @@ const RestaurantRegister = () => {
             Create Merchant Account
           </h1>
           <p className="text-gray-600 mt-2">
-            Join us and increase your customers today !
+            Start selling on YomDrop today !
           </p>
         </div>
 
@@ -119,7 +119,7 @@ const RestaurantRegister = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <label className="block text-sm font-medium text-gray-700">
-              Full Name
+              Business Name
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -127,11 +127,11 @@ const RestaurantRegister = () => {
               </div>
               <input
                 type="text"
-                name="fullName"
-                value={formData.email}
+                name="businessName"
+                value={formData.businessName}
                 onChange={handleChange}
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all"
-                placeholder="full name"
+                placeholder="Restaurant or business name"
                 required
               />
             </div>
@@ -193,7 +193,7 @@ const RestaurantRegister = () => {
                 value={formData.password}
                 onChange={handleChange}
                 className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all"
-                placeholder="xxxxxxxxxx"
+                placeholder="minimum 8 characters"
                 required
               />
               <button
@@ -226,7 +226,7 @@ const RestaurantRegister = () => {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all"
-                placeholder="xxxxxxxxxx"
+                placeholder="Re-enter password"
                 required
               />
               <button
@@ -247,27 +247,25 @@ const RestaurantRegister = () => {
             type="submit"
             className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center group"
           >
-            <span>CREATE ACCOUNT</span>
+            <span>Create Account & Continue</span>
           </button>
+          <p className="text-sm text-center text-gray-600 mt-4">
+            Already have an account?{" "}
+            <a
+              href="/login"
+              className="text-red-600 hover:text-red-700 font-medium"
+            >
+              Sign in
+            </a>
+          </p>
         </form>
-
-        {/* Divider */}
-        <div className="my-8">
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-gray-500">
-                Or continue with
-              </span>
-            </div>
-          </div>
+        {/* Note */}
+        <div className="relative flex justify-center text-sm">
+          <p className="text-xs text-gray-600 text-center mt-3 w-2xs bg-gray-100 p-1.5 rounded-2xl">
+            Note: You will receive a verification email after registration.
+            Please verify your email to continue with restaurant setup.
+          </p>
         </div>
-
-        <button className="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-300 hover:border-red-300 text-gray-700 font-medium py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-300 group">
-          <span className="font-semibold">Login with Personal Gmail</span>
-        </button>
 
         <div className="mt-8 pt-6 border-t border-gray-200">
           <p className="text-center text-sm text-gray-600">
