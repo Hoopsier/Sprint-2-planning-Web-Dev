@@ -37,10 +37,9 @@ export default function Hero() {
   
   return (
     <div>
-      {/* Page Title */}
-        <h2 className="font-semibold">Home</h2>
-      
+
       {/* Hero Section */}
+      
       <div className="px-4 relative">
         <div className="h-60 bg-linear-to-r from-green-100 to-green-800 rounded-lg flex flex-col justify-center px-10">
           <h2 className="text-5xl font-bold text-green-900">
@@ -65,6 +64,7 @@ export default function Hero() {
       </div>
 
       {/* Filters */}
+
       <div className="flex flex-wrap gap-2 px-4 py-3">
         {["Feature", "Rating", "Delivery Time", "Price"].map((item) => (
           <button
@@ -77,19 +77,16 @@ export default function Hero() {
       </div>
 
      {/* Restaurant Cards */}
-  <div className="grid grid-cols-2 gap-5 px-6 pb-14">
-    {restaurants.map((restaurant) => (
-      <RestaurantCard
-        key={restaurant.id}
-        restaurant={restaurant}
-  />
+
+      <div className="grid grid-cols-2 gap-5 px-6 pb-14">
+        {restaurants.map((restaurant) => (
+          <RestaurantCard
+            key={restaurant.id}
+            restaurant={restaurant}
+      />
   ))}
 </div>
 
-      {/* Footer */}
-      <footer className="mt-auto border-t py-2 text-center text-xs bg-gray-50">
-        About Us
-      </footer>
-    </div>
+  </div>
   );
 }
