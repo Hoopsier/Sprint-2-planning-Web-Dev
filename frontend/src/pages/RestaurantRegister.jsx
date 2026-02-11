@@ -9,11 +9,12 @@ import {
   PhoneIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
+import { NavLink } from "react-router-dom";
 
 import AuthTabButton from "../components/Ui/AuthTabButton";
 
 const RestaurantRegister = () => {
-  const [activeTab, setActiveTab] = useState("restaurant");
+
 
   const [formData, setFormData] = useState({
     businessName: "",
@@ -72,7 +73,10 @@ const RestaurantRegister = () => {
                   Welcome to <span className="text-yellow-300">Yum</span>
                   <span className="text-white">Drop</span>
                 </h2>
-                <p className="text-2xl mb-6 font-medium">Grow your restaurant with more visibility, more orders, and loyal customers.</p>
+                <p className="text-2xl mb-6 font-medium bg-black/7 rounded-3xl">
+                  Grow your restaurant with more visibility, more orders, and
+                  loyal customers.
+                </p>
                 <div className="h-1 w-24 bg-red-500 mx-auto mb-6"></div>
               </div>
             </div>
@@ -86,27 +90,15 @@ const RestaurantRegister = () => {
           <h1 className="text-3xl font-bold text-gray-900">
             Create Merchant Account
           </h1>
-          <p className="text-gray-600 mt-2">
-            Start selling on YomDrop today !
-          </p>
+          <p className="text-gray-600 mt-2">Start selling on YomDrop today !</p>
         </div>
 
         <div className="flex border-b mb-8">
-          <AuthTabButton
-            label="Login"
-            active={activeTab === "login"}
-            onClick={() => setActiveTab("login")}
-          />
-          <AuthTabButton
-            label="Sign Up"
-            active={activeTab === "signup"}
-            onClick={() => setActiveTab("signup")}
-          />
-
+          <AuthTabButton label="Login" to="/login" />
+          <AuthTabButton label="Sign Up" to="/signup" />
           <AuthTabButton
             label="List Your Restaurant"
-            active={activeTab === "restaurant"}
-            onClick={() => setActiveTab("restaurant")}
+            to="/restaurant-register"
           />
         </div>
 

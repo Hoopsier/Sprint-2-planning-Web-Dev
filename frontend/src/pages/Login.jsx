@@ -8,6 +8,7 @@ import {
   EyeSlashIcon,
 } from "@heroicons/react/24/outline";
 
+import AuthTabButton from "../components/Ui/AuthTabButton"
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
 
@@ -59,7 +60,7 @@ const Login = () => {
                   Welcome to <span className="text-yellow-300">Yum</span>
                   <span className="text-white">Drop</span>
                 </h2>
-                <p className="text-2xl mb-6 font-medium">Some Text</p>
+                <p className="text-2xl mb-6 font-medium bg-black/7 rounded-3xl">Delivering happiness to your door</p>
                 <div className="h-1 w-24 bg-red-500 mx-auto mb-6"></div>
               </div>
             </div>
@@ -77,16 +78,12 @@ const Login = () => {
         </div>
 
         <div className="flex border-b mb-8">
-          <button className="flex-1 pb-4 font-semibold text-lg relative">
-            Login
-            <span className="absolute bottom-0 left-0 w-full h-1 bg-red-600"></span>
-          </button>
-          <button className="flex-1 pb-4 font-semibold text-lg text-gray-500 hover:text-gray-700 transition-colors">
-            Sign Up
-          </button>
-          <button className="flex-1 pb-4 font-semibold text-lg text-gray-500 hover:text-gray-700 transition-colors">
-            List Your Restaurant
-          </button>
+          <AuthTabButton label="Login" to="/login" />
+          <AuthTabButton label="Sign Up" to="/signup" />
+          <AuthTabButton
+            label="List Your Restaurant"
+            to="/restaurant-register"
+          />
         </div>
 
         {showSignupMessage && (
