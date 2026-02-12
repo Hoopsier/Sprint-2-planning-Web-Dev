@@ -1,6 +1,6 @@
 import React from "react";
-import YoumDropLogo from '../assets/YumDropLogo.svg';
-
+import YoumDropLogo from "../assets/YumDropLogo.svg";
+import { NavLink } from "react-router-dom";
 import { MapPinIcon } from "@heroicons/react/24/outline";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
@@ -11,11 +11,13 @@ function Navbar() {
       <div className="w-full px-4 py-3 lg:py-4">
         <div className="max-w-screen-2xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center lg:flex-1">
-            <img
-              src={YoumDropLogo}
-              alt="YumDrop Logo"
-              className="h-10 md:h-12 w-auto"
-            />
+            <NavLink to="/home">
+              <img
+                src={YoumDropLogo}
+                alt="YumDrop Logo"
+                className="h-10 md:h-12 w-auto"
+              />
+            </NavLink>
           </div>
 
           <div className="hidden lg:flex flex-1 justify-center">
@@ -28,14 +30,16 @@ function Navbar() {
           </div>
 
           <div className="flex items-center justify-end lg:justify-center xl:justify-center gap-3 md:gap-6 lg:flex-1">
-            <button className="flex items-center gap-2 hover:text-blue-500 transition-colors">
-              <div className="flex items-center justify-center w-9 h-9 rounded-full border border-gray-300">
-                <UserIcon className="w-5 h-5" />
-              </div>
-              <span className="text-sm font-medium sm:hidden lg:inline">
-                Account
-              </span>
-            </button>
+            <NavLink to="/login">
+              <button className="flex items-center gap-2 hover:text-blue-500 transition-colors">
+                <div className="flex items-center justify-center w-9 h-9 rounded-full border border-gray-300">
+                  <UserIcon className="w-5 h-5" />
+                </div>
+                <span className="text-sm font-medium sm:hidden lg:inline">
+                  Account
+                </span>
+              </button>
+            </NavLink>
 
             <button className="relative flex items-center gap-2 hover:text-blue-500 transition-colors">
               <div className="flex items-center justify-center w-9 h-9 rounded-full border border-gray-300">
@@ -44,7 +48,6 @@ function Navbar() {
               <span className="text-sm font-medium sm:hidden lg:inline ">
                 Cart
               </span>
-              
             </button>
           </div>
         </div>
