@@ -40,16 +40,13 @@ export default function Hero() {
 
       {/* Hero Section */}
       
-      <div className="px-4 relative">
-        <div className="h-60 bg-linear-to-r from-green-100 to-green-800 rounded-lg flex flex-col justify-center px-10">
+      <div className="px-4 relative mb-10">
+        <div className="h-60 bg-linear-to-r from-green-100 to-green-800 rounded-lg flex flex-col justify-center px-10 relative">
           <h2 className="text-5xl font-bold text-green-900">
-          <Typewriter
-              text=" Eat Fresh.Feel Better." speed={30}/>
+          <Typewriter text=" Eat Fresh.Feel Better." speed={30}/>
             </h2>
             <p className="text-2xl text-green-700 mt-1">
-          <Typewriter
-          text="Healthy meals delivered to your door 🏡"
-          speed={40}
+          <Typewriter text="Healthy meals delivered to your door 🏡"speed={40}
       />          
       </p>
         </div>
