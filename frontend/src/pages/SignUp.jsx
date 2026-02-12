@@ -7,13 +7,13 @@ import {
   EyeIcon,
   EyeSlashIcon,
   PhoneIcon,
-  UserIcon 
+  UserIcon,
 } from "@heroicons/react/24/outline";
 
 import AuthTabButton from "../components/Ui/AuthTabButton";
 
 const SignUp = () => {
-  const [activeTab, setActiveTab] = useState("signup");
+  // const [activeTab, setActiveTab] = useState("signup");
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -72,7 +72,10 @@ const SignUp = () => {
                   Welcome to <span className="text-yellow-300">Yum</span>
                   <span className="text-white">Drop</span>
                 </h2>
-                <p className="text-2xl mb-6 font-medium">Some Text</p>
+                <p className="text-2xl mb-6 font-medium bg-black/7 rounded-3xl">
+                  Craving something delicious? We deliver the best meals in your
+                  city.
+                </p>
                 <div className="h-1 w-24 bg-red-500 mx-auto mb-6"></div>
               </div>
             </div>
@@ -92,21 +95,11 @@ const SignUp = () => {
         </div>
 
         <div className="flex border-b mb-8">
-          <AuthTabButton
-            label="Login"
-            active={activeTab === "login"}
-            onClick={() => setActiveTab("login")}
-          />
-          <AuthTabButton
-            label="Sign Up"
-            active={activeTab === "signup"}
-            onClick={() => setActiveTab("signup")}
-          />
-
+          <AuthTabButton label="Login" to="/login" />
+          <AuthTabButton label="Sign Up" to="/signup" />
           <AuthTabButton
             label="List Your Restaurant"
-            active={activeTab === "restaurant"}
-            onClick={() => setActiveTab("restaurant")}
+            to="/restaurant-register"
           />
         </div>
 
