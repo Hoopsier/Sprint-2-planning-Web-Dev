@@ -22,7 +22,7 @@ commits document everyone's participations and have been added to this repo.
 - I actively participated in group meetings
 - I rate myself (10/10) 
   
-### José (UI designer + Developer):
+### Noel (UI designer + Developer):
 - I focused mainly on frontend development, especially the restaurant list UI and overall page structure.
 - I helped translate parts of the Figma prototype into real React components and adjusted details that only appear once you start coding.
 - I worked on improving responsiveness and small UI consistency fixes (spacing, layout, and component alignment).
