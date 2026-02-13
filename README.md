@@ -30,14 +30,12 @@
 - Designing wireframes in Figma and defining UI components using Atomic Design.
 - Setting up project structure and task tracking using Trello and GitHub.
 - Collaborative problem-solving during pair programming and group work.
-- Planning how to limit AI
 
 ### Learned
 - How to communicate more effectively within a development team.
 - How to break user stories into technical tasks.
 - How to translate user needs into reusable UI components and basic user flows.
 - Initial experience integrating React with Express APIs.
-- To implement AI in the project.
 
 ### Lacked
 - Skills and experience in splitting tasks efficiently.
@@ -45,7 +43,6 @@
 - Clearer frontend–backend integration planning.
 - Early feedback rounds to validate usability decisions.
 - Confidence and clarity when starting new technical tasks.
-- Communication of issues or questions.
 
 ### Longed For
 - More active and open communication within the team.
