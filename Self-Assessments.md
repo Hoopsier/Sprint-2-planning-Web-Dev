@@ -14,3 +14,11 @@ commits document everyone's participations and have been added to this repo.
 - Actively participated in team discussions and completed tasks on time.
 - Self Rating (9/10): I gave my best effort during this sprint and improved my skills, 
   but I can still improve component reusability and accessibility.
+
+### Dornaraj (Developer + product owner now):
+- My job was to develop the frontend components, including the Navbar, Footer, Login page, Signup page, and Restaurant Registration page.
+- I also did a small amount of Figma design
+- I was active in the frontend development of the project.
+- I actively participated in group meetings
+- I rate myself (10/10) 
+  
